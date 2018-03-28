@@ -1,0 +1,45 @@
+{
+  "name": "app-express-generator-custom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=es2015",
+    "dev": "set NODE_ENV=development&&nodemon --exec npm run babel-node -- ./server/index.js",
+    "prod": "set NODE_ENV=production&&nodemon --exec npm run babel-node -- ./server/index.js",
+    "debug":"set DEBUG=express:*& npm run babel-node -- ./server/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "jwt-simple": "^0.5.1",
+    "lodash": "^4.17.5",
+    "moment": "^2.21.0",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.2",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.3",
+    "connect-session-sequelize": "^4.1.0",
+    "winston": "^3.0.0-rc3",
+    "serve-favicon": "^2.3.0",
+    "cookie-parser": "^1.3.5",
+    "lusca": "^1.4.1",
+    "passport": "~0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-facebook": "^2.0.0",
+    "passport-google-oauth20": "^1.0.0",
+    "express-session": "^1.11.3",
+    "errorhandler": "^1.4.2",
+    "jsonwebtoken": "^7.0.0",
+    "express-jwt": "^5.0.0",
+    "composable-middleware": "^0.3.0",
+    "ejs": "^2.5.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
