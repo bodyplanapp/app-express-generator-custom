@@ -29,6 +29,6 @@ const db = new Sequelize('bodyplan', 'bodyplan', 'bodyplan', {
 // Insert models below
 // db.Message = db.sequelize.import('../api/message/message.model');
 // db.Thing = db.sequelize.import('../api/thing/thing.model');
-// db.User = db.sequelize.import('../api/user/user.model');
+db.User = db.import('../api/user/user.model');
 
 module.exports = db;

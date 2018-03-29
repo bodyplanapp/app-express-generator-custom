@@ -4,7 +4,7 @@
 
 'use strict';
 
-import errors from './components/errors';
+import errors from './api/errors';
 import path from 'path';
 
 

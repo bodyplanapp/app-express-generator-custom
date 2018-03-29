@@ -2,7 +2,6 @@
  * Main application file
  */
 import express from 'express';
-// import http from 'http';
 import expressConfig from './config/express';
 import registerRoutes from './routes';
 
@@ -17,8 +16,6 @@ var app = express();
 // const wsInitPromise = initWebSocketServer(server);
 expressConfig(app);
 registerRoutes(app);
-
-
 
 // Expose app
 module.exports = app;

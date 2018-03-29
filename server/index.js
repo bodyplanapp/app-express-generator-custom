@@ -3,10 +3,6 @@ import sqldb from './sqldb';
 import http from 'http';
 import app from './app';
 
-// Set default node environment to development
-// console.log(config.baseURL);
-// const config = new Config();
-
 // Setup server
 var server = http.createServer(app);
 
@@ -36,8 +32,6 @@ sqldb.sync()
     .catch(err => {
         console.log('Server failed to start due to error: %s', err);
     });
-
-
 
 // Export the application
 // exports = module.exports = require('./app');
