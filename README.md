@@ -1,3 +1,5 @@
+start postgresSQL server: pg_ctl -D "C:\Program Files\PostgreSQL\10\data" restart
+
 install postgres on sequelize cmd:  npm install --save sequelize pg pg-hstore
 
 init sequelize cmd: sequelize init

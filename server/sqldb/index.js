@@ -27,8 +27,13 @@ const db = new Sequelize('bodyplan', 'bodyplan', 'bodyplan', {
 
 
 // Insert models below
-// db.Message = db.sequelize.import('../api/message/message.model');
-// db.Thing = db.sequelize.import('../api/thing/thing.model');
 db.User = db.import('../api/user/user.model');
+db.Customer = db.import('../api/customer/customer.model');
+db.PersonalTrainer = db.import('../api/personaltrainer/personaltrainer.model');
+
+// Insert relations below
+db.PersonalTrainer.belongsTo(db.User);
+db.Customer.belongsTo(db.User);
+
 
 module.exports = db;

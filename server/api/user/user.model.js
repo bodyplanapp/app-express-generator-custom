@@ -3,18 +3,18 @@
 import crypto from 'crypto';
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
-var validatePresenceOf = function(value) {
+var validatePresenceOf = function (value) {
     return value && value.length;
 };
 
-export default function(sequelize, DataTypes) {
-    return sequelize.define('User', {
-        _id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
+export default function (sequelize, DataTypes) {
+    return  sequelize.define('User', {
+        // _id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     primaryKey: true,
+        //     autoIncrement: true
+        // },
         name: DataTypes.STRING,
         email: {
             type: DataTypes.STRING,
@@ -40,7 +40,10 @@ export default function(sequelize, DataTypes) {
         facebook: DataTypes.JSON,
         google: DataTypes.JSON,
         github: DataTypes.JSON
-    }, 
+    });
+
+
+}
     // {
     //     /**
     //      * Virtual Getters
@@ -220,5 +223,3 @@ export default function(sequelize, DataTypes) {
     //         }
     //     }
     // }
-);
-}

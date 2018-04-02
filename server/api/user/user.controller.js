@@ -1,6 +1,8 @@
 'use strict';
 
 import { User } from '../../sqldb';
+import { PersonalTrainer } from '../../sqldb';
+import { Customer } from '../../sqldb';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 
@@ -44,13 +46,27 @@ export function index(req, res) {
 export function create(req, res) {
     var newUser = User.build(req.body);
     newUser.setDataValue('provider', 'local');
-    newUser.setDataValue('role', 'user');
+    // newUser.setDataValue('role', 'user');
     return newUser.save()
-        .then(function (user) {
+        .then((user) => {
+            if (user.role === 'personaltrainer') {
+                return PersonalTrainer.create({
+                    UserId: user.id
+                }).then(personalTrainer => {
+                    return personalTrainer.UserId;
+                });
+            } else {
+                return Customer.create({
+                    UserId: user.id
+                }).then(customer => {
+                    return customer.UserId;
+                });
+            }
+        }).then(id => {
             // var token = jwt.sign({ _id: user._id }, config.secrets.session, {
             //     expiresIn: 60 * 60 * 5
             // });
-            var token = jwt.sign({ _id: user._id }, config.secrets.session);
+            var token = jwt.sign({ _id: id }, config.secrets.session);
             res.json({ token });
         })
         .catch(validationError(res));
@@ -61,17 +77,17 @@ export function create(req, res) {
  */
 export function show(req, res, next) {
     var userId = req.params.id;
-
     return User.find({
         where: {
             _id: userId
         }
     })
         .then(user => {
+            console.log("user", user)
             if (!user) {
                 return res.status(404).end();
             }
-            res.json(user.profile);
+            res.json(user);
         })
         .catch(err => next(err));
 }

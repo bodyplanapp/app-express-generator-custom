@@ -22,7 +22,7 @@ sqldb
         console.error('Unable to connect to the database:', err);
     });
 
-sqldb.sync()
+sqldb.sync({ force: true })
     //   .then(wsInitPromise)
     //   .then(primus => {
     //       app.primus = primus;
